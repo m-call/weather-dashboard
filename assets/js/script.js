@@ -1,5 +1,6 @@
 var submit = document.getElementById("submit");
 var city = document.getElementById("city");
+var image = document.getElementById("image");
 var temp = document.getElementById("temp");
 var wind = document.getElementById("wind");
 var humid = document.getElementById("humid");
@@ -20,6 +21,17 @@ function searchWeather(event) {
     })
     .then(function (data) {
         console.log(data);
+        updateContent(data);
     })
+
+}
+
+function updateContent(data) {
+
+    city.textContent = data.name;
+    image.setAttribute('src', 'https://openweathermap.org/img/w/' + data.weather[0].icon + '.png');
+    temp.textContent = "Temp: " + data.main.temp + "°F";
+    wind.textContent = "Wind: " + data.wind.speed + " MPH";
+    humid.textContent = "Humidity: " + data.main.humidity + "%";
 
 }

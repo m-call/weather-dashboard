@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 header {
@@ -14,7 +15,6 @@ header h1 {
     color: white;
     padding-top: 25px;
     font-size: 40px;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 main {
@@ -29,7 +29,6 @@ main {
 .side-nav h2 {
     margin-left: 10px;
     font-size: 32px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin-top: 10px;
 }
 
@@ -55,7 +54,6 @@ main {
     background-color: dodgerblue;
     color: white;
     font-size: 16px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     width: 90%;
     height: 40px;
     margin-left: 10px;
@@ -69,9 +67,15 @@ main {
 }
 
 .contents h2 {
+    display: inline-flex;
     margin-left: 10px;
+}
+
+.contents img {
+
 }
 
 .contents p {
     margin-left: 10px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
