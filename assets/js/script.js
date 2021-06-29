@@ -1,5 +1,6 @@
 // Creating variables that target HTML elements by ID so that the HTML can be manipulated in JavaScript
 var submit = document.getElementById("submit");
+var recent = document.getElementById("recent");
 var city = document.getElementById("city");
 var date = document.getElementById("date");
 var image = document.getElementById("image");
@@ -60,6 +61,33 @@ function updateContent(data) {
     })
     .then(function (data) {
         uvi.textContent = data.current.uvi;
+
+        // Sets the background color for the UV Index
+        if (uvi.textContent <= 2) {
+            uvi.style.backgroundColor = 'green';
+            uvi.style.borderRadius = '5px';
+        } else if (uvi.textContent > 2 && uvi.textContent <= 5) {
+            uvi.style.backgroundColor = 'yellow';
+            uvi.style.borderRadius = '5px';
+        } else if (uvi.textContent > 5 && uvi.textContent <= 7) {
+            uvi.style.backgroundColor = 'orange';
+            uvi.style.borderRadius = '5px';
+        } else if (uvi.textContent > 7 && uvi.textContent <= 10) {
+            uvi.style.backgroundColor = 'red';
+            uvi.style.borderRadius = '5px';
+        } else {
+            uvi.style.backgroundColor = 'purple';
+            uvi.style.borderRadius = '5px';
+        }
     })
 
+    updateRecentSearches(city.textContent);
+
+}
+
+function updateRecentSearches(city) {
+    var recentBtn = document.createElement('button');
+    recentBtn.textContent = city;
+    console.log(recentBtn.textContent);
+    recent.append(recentBtn);
 }

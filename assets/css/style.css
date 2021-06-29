@@ -63,6 +63,17 @@ main {
     list-style-type: none;
 }
 
+.recent-searches button {
+    border-radius: 5px;
+    background-color: grey;
+    color: white;
+    font-size: 16px;
+    width: 90%;
+    height: 40px;
+    margin-left: -16px;
+    margin-top: 10px;
+}
+
 .contents {
     margin-top: 20px;
     margin-right: 20px;
@@ -83,6 +94,10 @@ main {
     margin-left: 10px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 20px;
+}
+
+.forecast {
+    margin-top: 20px;
 }
 
 #date {
