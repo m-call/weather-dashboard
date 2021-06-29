@@ -12,6 +12,9 @@ var uvi = document.getElementById("uvi");
 // OpenWeather API Key
 var apiKey = "bc0e6bde862987722740c53628de2aa5";
 
+// Empty array that will be used to store recent searches in Local Storage
+var searches = JSON.parse(localStorage.getItem("searches")) || [];
+
 // An event listener for when the search button is clicked
 submit.addEventListener('click', searchWeather);
 
@@ -29,7 +32,6 @@ function searchWeather(event) {
             return res.json();
         })
         .then(function (data) {
-            console.log(data);
             updateContent(data);
         })
     } else {
@@ -55,11 +57,12 @@ function updateContent(data) {
 
     // Making an API call using the lat and lon variables to get the UV Index
     // and then setting it to the uvi variable to update the HTML element
-    fetch ("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey)
+    fetch ("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + apiKey)
     .then(function (res) {
         return res.json();
     })
     .then(function (data) {
+        console.log(data);
         uvi.textContent = data.current.uvi;
 
         // Sets the background color for the UV Index
@@ -79,15 +82,55 @@ function updateContent(data) {
             uvi.style.backgroundColor = 'purple';
             uvi.style.borderRadius = '5px';
         }
+
+        updateForecast(data);
+
     })
 
     updateRecentSearches(city.textContent);
 
 }
 
+// A function that creates a button underneath the recent searches
+// everytime that a new search is entered
 function updateRecentSearches(city) {
+
     var recentBtn = document.createElement('button');
     recentBtn.textContent = city;
-    console.log(recentBtn.textContent);
     recent.append(recentBtn);
+
+    searches.push(city);
+    localStorage.setItem("searches", JSON.stringify(searches));
+
+    $(recentBtn).on('click', function () {
+        updateContent(recentBtn.textContent);
+    })
+
+}
+
+// A function containing a for loop to create and display the 5-day forecast
+function updateForecast(data) {
+    
+    for (i = 1; i <= 5; i++) {
+        var c = document.querySelector('.card');
+        var card = document.createElement('div');
+        card.setAttribute('class', 'card');
+        var cardDate = document.createElement('p')
+        cardDate.textContent = moment().add(i, "days").format("l");
+        var cardIcon = document.createElement('img');
+        cardIcon.setAttribute('src', 'https://openweathermap.org/img/w/' + data.daily[i].weather[0].icon + '.png');
+        var cardTemp = document.createElement('p');
+        cardTemp.textContent = "Temp: " + data.daily[i].temp.day + "°F";
+        var cardWind = document.createElement('p');
+        cardWind.textContent = "Wind: " + data.daily[i].wind_speed + " MPH";
+        var cardHumid = document.createElement('p');
+        cardHumid.textContent = "Humidity: " + data.daily[i].humidity + "%";
+        card.appendChild(cardDate);
+        card.appendChild(cardIcon);
+        card.appendChild(cardTemp);
+        card.appendChild(cardWind);
+        card.appendChild(cardHumid);
+        c.appendChild(card);
+    }
+
 }
