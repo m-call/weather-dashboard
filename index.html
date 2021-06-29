@@ -31,6 +31,10 @@
 
                     <hr>
 
+                    <ul class="recent-searches">
+                        <li>Recent Searches</li>
+                    </ul>
+
                 </nav>
 
             </div>
@@ -39,6 +43,7 @@
 
                 <br>
                 <h2 id="city">Search a city!</h2>
+                <p id="date"></p>
                 <img id="image">
                 <br>
                 <p id="temp">Temp: </p>
@@ -47,17 +52,23 @@
                 <br>
                 <p id="humid">Humidity: </p>
                 <br>
-                <p id="uvi">UV Index: </p>
+                <p id="uv">UV Index: </p><p id="uvi"></p>
                 <br>
 
             </div>
 
             <div class="forecast">
 
+                <h2 id="forecast">5-Day Forecast:</h2>
+
             </div>
 
         </main>
     
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" 
+        integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" 
+        crossorigin="anonymous" 
+        referrerpolicy="no-referrer"></script>
         <script src="./assets/js/script.js"></script>
 
     </body>

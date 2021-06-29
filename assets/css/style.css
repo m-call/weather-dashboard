@@ -22,10 +22,6 @@ main {
     grid-template-columns: 1fr 5fr;
 }
 
-.side-nav {
-
-}
-
 .side-nav h2 {
     margin-left: 10px;
     font-size: 32px;
@@ -60,6 +56,13 @@ main {
     margin-top: 10px;
 }
 
+.recent-searches {
+    margin-left: 40px;
+    font-size: 24px;
+    margin-top: 10px;
+    list-style-type: none;
+}
+
 .contents {
     margin-top: 20px;
     margin-right: 20px;
@@ -69,13 +72,29 @@ main {
 .contents h2 {
     display: inline-flex;
     margin-left: 10px;
+    font-size: 32px;
 }
 
 .contents img {
-
+    margin-left: 10px;
 }
 
 .contents p {
     margin-left: 10px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+}
+
+#date {
+    font-weight: bolder;
+    font-size: 28px;
+}
+
+#uv {
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+#uvi {
+    display: inline-flex;
 }
